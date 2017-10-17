@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title_main }} | {{ title_sub }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="conatiner-main">
+        <h1>Micro Blog</h1>
+        <div class="btn-group">
+            <div class="btn"><a href="{% url 'login' %}">log in</a></div>
+            <div class="btn"><a href="{% url 'signup' %}">sign up</a></div>
+        </div>
+    </div>
+
+</body>
+</html>
