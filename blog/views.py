@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .forms import UserSignupForm
 
 # Create your views here.
 
@@ -11,7 +12,9 @@ def index(request):
 
 
 def signup(request):
-    return HttpResponse("This is the signup page.")
+    form = UserSignupForm()
+    context = {'title_main': title_main, 'title_sub': 'Sign Up', 'form': form, }
+    return render(request, 'blog/signup.html', context)
 
 
 def login(request):

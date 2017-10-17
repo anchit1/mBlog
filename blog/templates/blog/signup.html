@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "blog/generic_signup_login.html" %}
+
+{% block content %}
+    <h1>Sign Up</h1>
+    <form method="post"> {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" value="Sign Up" class="submit-btn">Sign Up</button>
+    </form>
+{% endblock %}
