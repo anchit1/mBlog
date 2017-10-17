@@ -21,3 +21,7 @@ def login(request):
     form = UserLoginForm()
     context = {'title_main': title_main, 'title_sub': 'Log In', 'form': form}
     return render(request, 'blog/login.html', context)
+
+
+def about(request):
+    return HttpResponse("This is the about page.")

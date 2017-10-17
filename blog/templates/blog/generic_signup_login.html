@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <title>{{ title_main }} | {{ title_sub }}</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}"
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
 </head>
 <body>
+
+    <div class="header">
+        <div class="header-link"><a href="{% url 'about' %}" class="block">ABOUT</a></div>
+        <div class="header-logo"><a href="{% url 'home' %}" class="block">mBlog</a></div>
+    </div>
 
     <div class="container">
         {% block content %}
