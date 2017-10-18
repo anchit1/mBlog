@@ -5,11 +5,15 @@ body {
     box-sizing: border-box;
     background-color: #2196F3;
     font-family: 'Signika', sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .container {
     /*width: 50%;*/
-    margin-top: 10vh;
+    margin-top: 1vh;
     /*background-color: indianred;*/
     text-align: center;
 }
@@ -33,6 +37,11 @@ input {
     margin-top: 1vh;
     box-sizing: border-box;
 }
+
+input:focus {
+    border-color: white;
+}
+
 
 label {
     color: white;

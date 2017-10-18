@@ -7,9 +7,9 @@ class User(models.Model):
 
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    email = models.EmailField()
-    password_hash = models.CharField(max_length=64)
+    username = models.CharField(max_length=16, unique=True)
+    email = models.CharField(default='abc@example.com', unique=True, max_length=75)
+    password_hash = models.CharField(max_length=256)
 
     def __str__(self):
-        name = self.first_name + ' ' + self.last_name
-        return name;
+        return self.username
