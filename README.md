@@ -1,4 +1,9 @@
-# Instructions for running the project
+## mBlog
+
+mBlog is a microblogging website similar to Twitter. It is built on a Django backend.
+
+
+### Running the project
 
 To run the project in a development environment, you must have **python** and **django** installed.
 
@@ -10,4 +15,4 @@ Next, run `sudo apt-get install python3-pip` to install pip.
 Then run `pip install django`. This installs django.
 
 
-Now clone the repository and `cd` into the project folder. Here run `python3 manage.py runserver`. This should start a  development server on `localhost:8000/`. Navigate to this location and you shouldsee the website.
+Now clone the repository and `cd` into the project folder. Here run `python3 manage.py runserver`. This should start a  development server on `localhost:8000/`. Navigate to this location and you should see the website.
