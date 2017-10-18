@@ -25,7 +25,9 @@ SECRET_KEY = '0s1^(ex#vb8gc!2uw9o^o@w#k67@q#0a%h0bsirb$&s2amk-8n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'anchit1.pythonanywhere.com',
+]
 
 
 # Application definition
