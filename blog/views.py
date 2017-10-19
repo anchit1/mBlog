@@ -57,8 +57,11 @@ def login(request):
             return redirect('feed')
         else:
             err_list.append('Invalid username and/or password.')
-    else:
+    elif request.method == 'POST' and not User.objects.filter(username=request.POST['username']).exists():
         err_list.append('Invalid username and/or password.')
+
+    else:
+        form = UserLoginForm()
 
     context = {'title_main': title_main, 'title_sub': 'Log In', 'form': form, 'messages': msg, 'err_list': err_list}
     return render(request, 'blog/login.html', context)
