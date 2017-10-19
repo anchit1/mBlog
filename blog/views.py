@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import UserSignupForm, UserLoginForm
 from .models import User
 from django.contrib.auth.hashers import check_password, make_password
+from django.contrib import messages
+from django.contrib.messages import get_messages
 
 # Create your views here.
 
@@ -36,6 +38,9 @@ def signup(request):
             p_hash = make_password(form.cleaned_data['password'])
             new_user.password_hash = p_hash
             new_user.save()
+            messages.add_message(request, messages.SUCCESS, 'Account created successfully. Log in to continue.')
+            return redirect('login')
+
     else:
         form = UserSignupForm()
     context = {'title_main': title_main, 'title_sub': 'Sign Up', 'form': form, 'err_list': err_list}
@@ -44,7 +49,8 @@ def signup(request):
 
 def login(request):
     form = UserLoginForm()
-    context = {'title_main': title_main, 'title_sub': 'Log In', 'form': form}
+    msg = get_messages(request)
+    context = {'title_main': title_main, 'title_sub': 'Log In', 'form': form, 'messages': msg}
     return render(request, 'blog/login.html', context)
 
 

@@ -3,6 +3,15 @@
 {% block content %}
     <h1>Log In</h1>
     <form method="POST"> {% csrf_token %}
+        {% if messages %}
+            <div class="success-dialog">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
         {{ form.as_p }}
         <button type="submit" class="submit-btn">Log In >></button>
         <p style="text-align: center; color: white;">or <a id="f-link" href="{% url 'signup' %}">sign up</a> if you don't already have an account. </p>
