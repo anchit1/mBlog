@@ -151,13 +151,15 @@ a {
     padding: 5px 0;
     text-align: left;
     box-sizing: border-box;
+    border: solid 3px #B71C1C;
 }
 
 .success-dialog {
-    background-color: limegreen;
+    background-color: #4CAF50;
     color: white;
     width: 100%;
     padding: 5px 0;
     text-align: left;
     box-sizing: border-box;
+    border: solid 3px #1B5E20;
 }

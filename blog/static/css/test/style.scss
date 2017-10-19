@@ -1,0 +1,100 @@
+$primary-color: #2196F3;
+$secondary-color: #BBDEFB;
+$font-color-1: white;
+$font-color-2: black; 
+
+$sidebar-flex: 4;
+$content-flex: 10;
+$aside-flex: 3;
+
+/***** misceleneous stuff *****/
+body {
+    margin: 0;
+    background-color: $primary-color;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.flex {
+    display: flex;
+}
+
+.divider {
+    background: lightgray;
+    width: 90%;
+    height: 1px;
+    margin: 10px auto;
+}
+
+.container-90 {
+    width: 90%;
+    padding: 10px 0;
+    margin: 0 auto;
+}
+
+
+/***** header style *****/
+#header {
+    background-color: $primary-color;
+    border-bottom: solid 5px $secondary-color;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+}
+
+/**********************/
+/***** body style *****/
+/**********************/
+
+#body {
+    padding-top: 50px;
+    height: 100vh;
+}
+
+
+/***** sidebar style *****/
+#sidebar {
+    flex: $sidebar-flex;
+    min-width: 300px;
+    background: $primary-color;
+}
+
+#profile-side-container {
+    width: 90%;
+    // height: 400px;
+    background: #E3F2FD;
+    margin: 30px auto;
+    text-align: center;
+    // border: solid 3px #BBDEFB;
+}
+
+#profile-pic {
+    width: 240px;
+    height: 240px;
+    margin-top: 20px;
+}
+
+#profile-info {
+    color: gray;
+    font-size: 14px;
+    font-family: 'helvetica';
+    font-weight: 500;
+    p {
+        margin: 10px 0;
+    }
+}
+
+
+/***** content style *****/
+#content {
+    flex: $content-flex;
+    // background: rosybrown;
+    min-width: 600px;
+}
+
+#aside {
+    flex: $aside-flex;
+    // background: salmon;
+}

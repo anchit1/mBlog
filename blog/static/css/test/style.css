@@ -1,0 +1,71 @@
+/***** misceleneous stuff *****/
+body {
+  margin: 0;
+  background-color: #2196F3; }
+
+* {
+  box-sizing: border-box; }
+
+.flex {
+  display: flex; }
+
+.divider {
+  background: lightgray;
+  width: 90%;
+  height: 1px;
+  margin: 10px auto; }
+
+.container-90 {
+  width: 90%;
+  padding: 10px 0;
+  margin: 0 auto; }
+
+/***** header style *****/
+#header {
+  background-color: #2196F3;
+  border-bottom: solid 5px #BBDEFB;
+  height: 50px;
+  width: 100%;
+  position: fixed; }
+
+/**********************/
+/***** body style *****/
+/**********************/
+#body {
+  padding-top: 50px;
+  height: 100vh; }
+
+/***** sidebar style *****/
+#sidebar {
+  flex: 4;
+  min-width: 300px;
+  background: #2196F3; }
+
+#profile-side-container {
+  width: 90%;
+  background: #E3F2FD;
+  margin: 30px auto;
+  text-align: center; }
+
+#profile-pic {
+  width: 240px;
+  height: 240px;
+  margin-top: 20px; }
+
+#profile-info {
+  color: gray;
+  font-size: 14px;
+  font-family: 'helvetica';
+  font-weight: 500; }
+  #profile-info p {
+    margin: 10px 0; }
+
+/***** content style *****/
+#content {
+  flex: 10;
+  min-width: 600px; }
+
+#aside {
+  flex: 3; }
+
+/*# sourceMappingURL=style.css.map */
