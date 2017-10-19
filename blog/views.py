@@ -50,9 +50,23 @@ def signup(request):
 def login(request):
     form = UserLoginForm()
     msg = get_messages(request)
-    context = {'title_main': title_main, 'title_sub': 'Log In', 'form': form, 'messages': msg}
+    err_list = []
+    if request.method == 'POST' and User.objects.filter(username=request.POST['username']).exists():
+        user = User.objects.get(username=request.POST['username'])
+        if check_password(request.POST['password'], user.password_hash):
+            return redirect('feed')
+        else:
+            err_list.append('Invalid username and/or password.')
+    else:
+        err_list.append('Invalid username and/or password.')
+
+    context = {'title_main': title_main, 'title_sub': 'Log In', 'form': form, 'messages': msg, 'err_list': err_list}
     return render(request, 'blog/login.html', context)
 
 
 def about(request):
     return HttpResponse("This is the about page.")
+
+
+def feed(request):
+    return HttpResponse("This is the user feed.")

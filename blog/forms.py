@@ -15,4 +15,3 @@ class UserLoginForm(forms.Form):
 
     username = forms.CharField(max_length=16)
     password = forms.CharField(max_length=64, widget=forms.PasswordInput)
-    remember_me = forms.CheckboxInput()

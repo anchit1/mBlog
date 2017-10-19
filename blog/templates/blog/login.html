@@ -12,6 +12,15 @@
                 </ul>
             </div>
         {% endif %}
+        {% if err_list %}
+        <div class="error-dialog">
+            <ul>
+            {% for error in err_list %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
         {{ form.as_p }}
         <button type="submit" class="submit-btn">Log In >></button>
         <p style="text-align: center; color: white;">or <a id="f-link" href="{% url 'signup' %}">sign up</a> if you don't already have an account. </p>
