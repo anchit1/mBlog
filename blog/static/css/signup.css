@@ -139,3 +139,16 @@ a {
     color: #2196F3;
     background-color: white;
 }
+
+.error {
+    border-color: #F44336;
+}
+
+.error-dialog {
+    background-color: #F44336;
+    color: white;
+    width: 100%;
+    padding: 5px 0;
+    text-align: left;
+    box-sizing: border-box;
+}

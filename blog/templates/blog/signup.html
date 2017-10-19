@@ -7,9 +7,17 @@
 
 {% block content %}
     <h1>Sign Up</h1>
-    <form method="post"> {% csrf_token %}
+
+    <form id="signup-form" method="post"> {% csrf_token %}
+        <div class="error-dialog">
+            <ul>
+            {% for error in err_list %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+        </div>
         {{ form.as_p }}
-        <button type="submit" value="Sign Up" class="submit-btn">Sign Up</button>
+        <button type="submit" value="Sign Up" class="submit-btn" id="submit-btn" onsubmit="event.preventDefault(); validate_signup_form()">Sign Up</button>
         <p style="text-align: center; color: white;">or <a id="f-link" href="{% url 'login' %}">log in</a> if you already have an account. </p>
     </form>
 {% endblock %}
