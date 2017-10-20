@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .forms import UserSignupForm, UserLoginForm
 from .models import User
 from django.contrib.auth.hashers import check_password, make_password
-from django.contrib import messages
+from django.contrib import messages, sessions
 from django.contrib.messages import get_messages
 
 # Create your views here.
@@ -12,6 +12,9 @@ title_main = 'Micro Blog'
 
 
 def index(request):
+    if request.session.get('user_id') is not None:
+        return redirect('feed')
+
     context = { 'title_main': title_main, 'title_sub': 'Home'}
     return render(request, 'blog/index.html', context)
 
@@ -54,10 +57,15 @@ def login(request):
     if request.method == 'POST' and User.objects.filter(username=request.POST['username']).exists():
         user = User.objects.get(username=request.POST['username'])
         if check_password(request.POST['password'], user.password_hash):
+            # TODO: set a cookie if the user checks the remember me box
+            if request.POST.get('remember_me', 'off') == 'on':
+                request.session['user_id'] = user.id
             return redirect('feed')
+
         else:
             err_list.append('Invalid username and/or password.')
     elif request.method == 'POST' and not User.objects.filter(username=request.POST['username']).exists():
+        print('checkbox value: ' + request.POST.get('remember_me', 'off'))
         err_list.append('Invalid username and/or password.')
 
     else:
