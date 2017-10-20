@@ -12,6 +12,7 @@
                 </ul>
             </div>
         {% endif %}
+
         {% if err_list %}
         <div class="error-dialog">
             <ul>
@@ -21,7 +22,13 @@
             </ul>
         </div>
         {% endif %}
+
         {{ form.as_p }}
+        <div id="checkbox-container">
+            <input type="checkbox" id="id_remember_me" name="remember_me" required="">
+            <span id="check_label">Remember me</span>
+        </div>
+
         <button type="submit" class="submit-btn">Log In >></button>
         <p style="text-align: center; color: white;">or <a id="f-link" href="{% url 'signup' %}">sign up</a> if you don't already have an account. </p>
     </form>

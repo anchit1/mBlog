@@ -163,3 +163,21 @@ a {
     box-sizing: border-box;
     border: solid 3px #1B5E20;
 }
+
+#id_remember_me {
+    width: 25px;
+    height: 25px;
+    margin: 0px;
+    position: relative;
+    top: 6px;
+}
+
+
+#check_label {
+    color: white;
+}
+
+#checkbox-container {
+    height: 25px;
+    text-align: left;
+}
