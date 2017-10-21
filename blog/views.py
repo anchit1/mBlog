@@ -75,9 +75,16 @@ def login(request):
     return render(request, 'blog/login.html', context)
 
 
+def logout(request):
+    del request.session['user_id']
+    request.session.flush()
+    print(request.session.get('user_id'))
+    return redirect('home')
+
+
 def about(request):
     return HttpResponse("This is the about page.")
 
 
 def feed(request):
-    return HttpResponse("This is the user feed.")
+    return render(request, 'blog/feed.html')

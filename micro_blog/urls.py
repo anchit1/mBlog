@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^login/', views.login, name='login'),
     url(r'^about/', views.about, name='about'),
     url(r'^feed/', views.feed, name='feed'),
+    url(r'logout/', views.logout, name='logout'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
