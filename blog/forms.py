@@ -10,6 +10,11 @@ class UserSignupForm(forms.Form):
     password = forms.CharField(max_length=64, widget=forms.PasswordInput)
     password_confirm = forms.CharField(max_length=64, widget=forms.PasswordInput)
 
+class UserSignupForm2(forms.Form):
+
+    city = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'autocomplete': 'off'}))
+    country = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'autocomplete': 'off'}))
+
 
 class UserLoginForm(forms.Form):
 

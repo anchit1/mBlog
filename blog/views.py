@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import UserSignupForm, UserLoginForm
+from .forms import UserSignupForm, UserLoginForm, UserSignupForm2
 from .models import User
 from django.contrib.auth.hashers import check_password, make_password
 from django.contrib import messages, sessions
@@ -14,6 +14,8 @@ title_main = 'Micro Blog'
 def index(request):
     if request.session.get('user_id') is not None:
         return redirect('feed')
+    if request.session.get('form_success') is not None:
+        del request.session['form_success']
 
     context = { 'title_main': title_main, 'title_sub': 'Home'}
     return render(request, 'blog/index.html', context)
@@ -22,7 +24,7 @@ def index(request):
 def signup(request):
     new_user = User()
     err_list = []
-    if request.method == 'POST':
+    if request.method == 'POST' and request.session.get('form_success') is None:
         form = UserSignupForm(request.POST)
         if User.objects.filter(username=request.POST['username']).exists():
             err_list.append('username already exists.')
@@ -42,6 +44,22 @@ def signup(request):
             new_user.password_hash = p_hash
             new_user.save()
             messages.add_message(request, messages.SUCCESS, 'Account created successfully. Log in to continue.')
+
+            request.session['form_success'] = 'true'
+            request.session['registered_user'] = new_user.username
+            form2 = UserSignupForm2()
+            context = {'title_main': title_main, 'title_sub': 'Sign Up', 'form': form2}
+            return render(request, 'blog/signup2.html', context)
+
+    elif request.method == 'POST' and request.session.get('form_success') == 'true':
+        if request.session['registered_user'] is None:
+            return HttpResponse('cookie not found.')
+        else:
+            user = User.objects.get(username=request.session['registered_user']);
+            user.city = request.POST['city']
+            user.country = request.POST['country']
+            user.save()
+            del request.session['registered_user']
             return redirect('login')
 
     else:
@@ -57,7 +75,6 @@ def login(request):
     if request.method == 'POST' and User.objects.filter(username=request.POST['username']).exists():
         user = User.objects.get(username=request.POST['username'])
         if check_password(request.POST['password'], user.password_hash):
-            # TODO: set a cookie if the user checks the remember me box
             if request.POST.get('remember_me', 'off') == 'on':
                 request.session['user_id'] = user.id
             return redirect('feed')
