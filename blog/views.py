@@ -107,3 +107,8 @@ def about(request):
 def feed(request, pk):
     print(request.session.get('user_id'))
     return render(request, 'blog/feed.html', {'user': pk})
+
+
+def test(request):
+    return render(request, 'test/home.html')
+    # return HttpResponse('hello world')

@@ -15,6 +15,7 @@ body {
 
 * {
     box-sizing: border-box;
+    font-family: 'helvetica';
 }
 
 .flex {
@@ -23,9 +24,16 @@ body {
 
 .divider {
     background: lightgray;
-    width: 90%;
+    width: 80%;
     height: 1px;
-    margin: 10px auto;
+    margin: 5px auto;
+}
+
+.divider-vertical {
+    background-color: lightgray;
+    width: 1px;
+    height: 80%;
+    margin-top: 10%;
 }
 
 .container-90 {
@@ -57,7 +65,7 @@ body {
 /***** sidebar style *****/
 #sidebar {
     flex: $sidebar-flex;
-    min-width: 300px;
+    min-width: 275px;
     background: $primary-color;
 }
 
@@ -71,8 +79,8 @@ body {
 }
 
 #profile-pic {
-    width: 240px;
-    height: 240px;
+    width: 150px;
+    height: 150px;
     margin-top: 20px;
 }
 
@@ -82,7 +90,20 @@ body {
     font-family: 'helvetica';
     font-weight: 500;
     p {
-        margin: 10px 0;
+        margin: 5px 0;
+    }
+}
+
+#side-stat-container {
+    width: 95%;
+    min-height: 30px;
+    margin: 0 auto;
+    // background-color: red;
+    line-height: 30px;
+    p {
+        margin: 0;
+        padding: 0 5px;
+        font-size: 13px;
     }
 }
 
@@ -98,3 +119,4 @@ body {
     flex: $aside-flex;
     // background: salmon;
 }
+

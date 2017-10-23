@@ -4,7 +4,8 @@
             <title></title>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link href="style.css" rel="stylesheet">
+            {% load static %}
+            <link href="{% static 'css/test/style.css' %}" rel="stylesheet">
         </head>
         <body>
 
@@ -19,9 +20,15 @@
                     <div id="profile-side-container">
                         <img id="profile-pic" src="ss.png" alt="profile pic">
                         <div class="divider"></div>
+                        <div id="side-stat-container" class="flex">
+                            <p><strong>POSTS </strong>34,236</p>
+                            <p><strong>FOLLOWERS </strong>2.5M</p>
+                            <p><strong>FOLLOWING </strong>12</p>
+                        </div>
+                        <div class="divider"></div>
                         <div id="profile-info" class="container-90">
                             <p><strong>Lives in</strong> Jabalpur, India</p>
-                            <p><strong>Student at</strong> Gyan Ganga College of Technology</p>
+                            <p><strong>About </strong> I'm just some guy studying in GGCT.</p>
                         </div>
                     </div>
                 </div>
