@@ -106,7 +106,7 @@ def about(request):
 
 def feed(request, pk):
     print(request.session.get('user_id'))
-    return render(request, 'blog/feed.html', {'user': pk})
+    return render(request, 'blog/feed_base.html', {'user': pk})
 
 
 def test(request):
