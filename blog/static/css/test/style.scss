@@ -2,6 +2,7 @@ $primary-color: #2196F3;
 $secondary-color: #BBDEFB;
 $font-color-1: white;
 $font-color-2: black; 
+$bg-color: #F5F5F5;
 
 $sidebar-flex: 4;
 $content-flex: 10;
@@ -17,7 +18,7 @@ body {
 
 * {
     box-sizing: border-box;
-    font-family: 'helvetica';
+    font-family: 'Signika', 'helvetica';
 }
 
 .flex {
@@ -101,21 +102,21 @@ body {
 #sidebar {
     flex: $sidebar-flex;
     min-width: 275px;
-    background: $primary-color;
+    //background: $primary-color;
 }
 
 #profile-side-container {
     width: 90%;
     // height: 400px;
-    background: #E3F2FD;
+    background: white;
     margin: 30px auto;
     text-align: center;
     // border: solid 3px #BBDEFB;
 }
 
 #profile-pic {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     margin-top: 20px;
 }
 
@@ -138,7 +139,7 @@ body {
     p {
         margin: 0;
         padding: 0 5px;
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
@@ -146,10 +147,30 @@ body {
 /***** content style *****/
 #content {
     flex: $content-flex;
-    // background: rosybrown;
+     //background: rosybrown;
     min-width: 600px;
 }
 
+#new-post-container {
+    width: 85%;
+    height: 60px;
+    background-color: white;
+    margin: 30px auto;
+    border: solid 4px $secondary-color;
+
+    textarea {
+        margin: 0;
+        padding: 5px 15px;
+        border: 0;
+        width: 100%;
+        height: 100%;
+        resize: none;
+        font-size: 15px;
+    }
+}
+
+
+/***** aside style *****/
 #aside {
     flex: $aside-flex;
     // background: salmon;
