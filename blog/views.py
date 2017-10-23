@@ -17,7 +17,7 @@ def index(request):
     if request.session.get('form_success') is not None:
         del request.session['form_success']
 
-    context = { 'title_main': title_main, 'title_sub': 'Home'}
+    context = {'title_main': title_main, 'title_sub': 'Home'}
     return render(request, 'blog/index.html', context)
 
 
@@ -77,7 +77,7 @@ def login(request):
         if check_password(request.POST['password'], user.password_hash):
             if request.POST.get('remember_me', 'off') == 'on':
                 request.session['user_id'] = user.id
-            return redirect('feed')
+            return redirect('feed', pk=user.username)
 
         else:
             err_list.append('Invalid username and/or password.')
@@ -93,7 +93,8 @@ def login(request):
 
 
 def logout(request):
-    del request.session['user_id']
+    if request.session.get('user_id') is not None:
+        del request.session['user_id']
     request.session.flush()
     print(request.session.get('user_id'))
     return redirect('home')
@@ -103,5 +104,6 @@ def about(request):
     return HttpResponse("This is the about page.")
 
 
-def feed(request):
-    return render(request, 'blog/feed.html')
+def feed(request, pk):
+    print(request.session.get('user_id'))
+    return render(request, 'blog/feed.html', {'user': pk})
