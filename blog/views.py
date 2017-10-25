@@ -12,8 +12,8 @@ title_main = 'Micro Blog'
 
 
 def index(request):
-    if request.session.get('user_id') is not None:
-        return redirect('feed')
+    if request.session.get('remember_user') is not None:
+        return redirect('feed', pk=request.session.get('remember_user'))
     if request.session.get('form_success') is not None:
         del request.session['form_success']
 
@@ -75,8 +75,9 @@ def login(request):
     if request.method == 'POST' and User.objects.filter(username=request.POST['username']).exists():
         user = User.objects.get(username=request.POST['username'])
         if check_password(request.POST['password'], user.password_hash):
+            request.session['current_user'] = user.username
             if request.POST.get('remember_me', 'off') == 'on':
-                request.session['user_id'] = user.id
+                request.session['remember_user'] = user.username
             return redirect('feed', pk=user.username)
 
         else:
@@ -93,10 +94,10 @@ def login(request):
 
 
 def logout(request):
-    if request.session.get('user_id') is not None:
-        del request.session['user_id']
+    if request.session.get('remember_user') is not None:
+        del request.session['remember_user']
     request.session.flush()
-    print(request.session.get('user_id'))
+    print(request.session.get('remember_user'))
     return redirect('home')
 
 
@@ -105,10 +106,10 @@ def about(request):
 
 
 def feed(request, pk):
-    print(request.session.get('user_id'))
+    print(request.session.get('remember_user'))
     return render(request, 'blog/feed_base.html', {'user': pk})
 
 
 def test(request):
-    return render(request, 'test/home.html')
+    return render(request, 'test/test_feed.html')
     # return HttpResponse('hello world')

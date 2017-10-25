@@ -15,3 +15,13 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
+
+
+class Post(models.Model):
+
+    publish_date = models.DateTimeField()
+    content = models.CharField(max_length=150)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.content

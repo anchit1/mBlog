@@ -3,10 +3,11 @@ $secondary-color: #BBDEFB;
 $font-color-1: white;
 $font-color-2: black; 
 $bg-color: #F5F5F5;
+$header-color: white;
 
-$sidebar-flex: 4;
-$content-flex: 10;
-$aside-flex: 3;
+$sidebar-flex: 1;
+$content-flex: 1;
+$aside-flex: 1;
 
 $header-height: 50px;
 
@@ -45,32 +46,39 @@ body {
     margin: 0 auto;
 }
 
+.active {
+    display: block;
+}
+
+.inactive {
+    display: none;
+}
+
 
 /***** header style *****/
 #header {
-    background-color: $primary-color;
+    background-color: $header-color;
     border-bottom: solid 5px $secondary-color;
     height: $header-height;
     width: 100%;
     position: fixed;
-    flex-direction: row-reverse;
+    flex-direction: row;
     box-sizing: content-box;
 }
 
 #header-logo {
     line-height: $header-height;
     height: 100%;
-    margin-left: 20px;
+    margin-left: 7%;
     margin-right: auto;
     h1 {
-        color: white;
         margin: 0;
         font-size: 28px;
         //background-color: red;
     }
 
     a {
-        color: $font-color-1;
+        color: $primary-color;
         text-decoration: none;
         display: inline-block;
         width: 100%;
@@ -79,14 +87,38 @@ body {
     }
 
     a:hover {
-        background-color: white;
-        color: $primary-color;
+        background-color: $primary-color;
+        color: white;
     }
 }
 
 .header-link {
     height: 100%;
 }
+
+#dropdown-container {
+    height: 100%;
+    width: 100px;
+    line-height: $header-height;
+    text-align: center;
+    background-color: white;
+}
+
+#dropdown-container:hover {
+    cursor: pointer;
+    .dropdown-item {
+        display: block;
+    }
+}
+
+.dropdown-item {
+    display: none;
+    margin-top: 5px;
+    background-color: white;
+    height: 50px;
+    width: 100px;
+}
+
 
 /**********************/
 /***** body style *****/
@@ -101,15 +133,18 @@ body {
 /***** sidebar style *****/
 #sidebar {
     flex: $sidebar-flex;
-    min-width: 275px;
-    //background: $primary-color;
+    //min-width: 275px;
+    //background: indigo;
 }
 
 #profile-side-container {
-    width: 90%;
+    width: 70%;
     // height: 400px;
+    min-width: 275px;
     background: white;
-    margin: 30px auto;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: auto;
     text-align: center;
     // border: solid 3px #BBDEFB;
 }
@@ -139,7 +174,14 @@ body {
     p {
         margin: 0;
         padding: 0 5px;
-        font-size: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        color: $primary-color;
+    }
+    strong {
+        font-size: 12px;
+        font-weight: 600;
+        color: black;
     }
 }
 
@@ -147,26 +189,71 @@ body {
 /***** content style *****/
 #content {
     flex: $content-flex;
-     //background: rosybrown;
+    //background: rosybrown;
     min-width: 600px;
 }
 
 #new-post-container {
-    width: 85%;
-    height: 60px;
-    background-color: white;
+    width: 100%;
+    //height: auto;
+    background-color: $secondary-color;
     margin: 30px auto;
     border: solid 4px $secondary-color;
 
     textarea {
-        margin: 0;
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 4px;
         padding: 5px 15px;
         border: 0;
-        width: 100%;
-        height: 100%;
+        width: 90%;
+        height: 35px;
         resize: none;
         font-size: 15px;
     }
+
+    textarea:focus {
+        height: 100px;
+    }
+}
+
+#new-post-bottom {
+    margin-left: 10px;
+    width: 90%;
+    min-height: 30px;
+    background-color: $secondary-color;
+    //text-align: right;
+}
+
+#post-btn {
+    width: 80px;
+    height: 30px;
+    background-color: $primary-color;
+    color: white;
+    border: 0;
+    margin: 5px;
+}
+
+#post-btn:hover {
+    cursor: pointer;
+    background-color: white;
+    color: $primary-color;
+}
+
+.post-container {
+    width: 100%;
+    margin-top: 20px;
+    min-height: 120px;
+    background-color: white;
+    margin-left: auto; margin-right: auto;
+    .divider {
+        width: 96%;
+    }
+}
+
+.post-top-info {
+    padding-left: 25px;
+    font-size: 16px;
 }
 
 
