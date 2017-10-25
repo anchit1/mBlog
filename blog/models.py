@@ -19,7 +19,7 @@ class User(models.Model):
 
 class Post(models.Model):
 
-    publish_date = models.DateTimeField()
+    publish_date = models.DateTimeField(auto_now=True)
     content = models.CharField(max_length=150)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 

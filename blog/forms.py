@@ -20,3 +20,8 @@ class UserLoginForm(forms.Form):
 
     username = forms.CharField(max_length=16)
     password = forms.CharField(max_length=64, widget=forms.PasswordInput)
+
+
+class NewPostForm(forms.Form):
+
+    post_content = forms.CharField(max_length=150, widget=forms.Textarea(attrs={'placeholder': "What's on your mind...?"}), label='')

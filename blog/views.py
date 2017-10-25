@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import UserSignupForm, UserLoginForm, UserSignupForm2
-from .models import User
+from .forms import UserSignupForm, UserLoginForm, UserSignupForm2, NewPostForm
+from .models import User, Post
 from django.contrib.auth.hashers import check_password, make_password
 from django.contrib import messages, sessions
 from django.contrib.messages import get_messages
@@ -106,8 +106,13 @@ def about(request):
 
 
 def feed(request, pk):
-    print(request.session.get('remember_user'))
-    return render(request, 'blog/feed_base.html', {'user': pk})
+    form = NewPostForm()
+    if request.method == 'POST':
+        print('post request recieved.')
+        new_post = Post()
+        new_post.content = request.POST['post_content']
+        print(request.POST['post_content'])
+    return render(request, 'blog/feed_base.html', {'user': pk, 'form': form})
 
 
 def test(request):
