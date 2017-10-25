@@ -48,10 +48,10 @@
                 <div id="new-post-container">
                     <form id="new-post-form" method="post"> {% csrf_token %}
                         {{ form }}
+                        <div id="new-post-bottom" class="">
+                            <input id="post-btn" type="submit" value="POST">
+                        </div>
                     </form>
-                    <div id="new-post-bottom" class="inactive">
-                        <input id="post-btn" type="submit" value="POST">
-                    </div>
                 </div>
             </div>
 

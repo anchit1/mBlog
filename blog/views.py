@@ -108,10 +108,11 @@ def about(request):
 def feed(request, pk):
     form = NewPostForm()
     if request.method == 'POST':
-        print('post request recieved.')
         new_post = Post()
         new_post.content = request.POST['post_content']
-        print(request.POST['post_content'])
+        new_post.author = User.objects.get(username=request.session.get('current_user'))
+        new_post.save()
+        print(new_post.publish_date)
     return render(request, 'blog/feed_base.html', {'user': pk, 'form': form})
 
 
