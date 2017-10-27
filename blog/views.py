@@ -106,14 +106,14 @@ def about(request):
 
 
 def feed(request, pk):
-    form = NewPostForm()
     if request.method == 'POST':
         new_post = Post()
         new_post.content = request.POST['post_content']
         new_post.author = User.objects.get(username=request.session.get('current_user'))
         new_post.save()
+        return redirect('feed', pk=request.session.get('current_user'))
         print(new_post.publish_date)
-    return render(request, 'blog/feed_base.html', {'user': pk, 'form': form})
+    return render(request, 'blog/feed_base.html', {'user': pk})
 
 
 def test(request):
