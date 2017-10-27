@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 
+
 class UserSignupForm(forms.Form):
 
     first_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'autocomplete': 'off'}))
@@ -9,6 +10,7 @@ class UserSignupForm(forms.Form):
     email = forms.CharField(max_length=75)
     password = forms.CharField(max_length=64, widget=forms.PasswordInput)
     password_confirm = forms.CharField(max_length=64, widget=forms.PasswordInput)
+
 
 class UserSignupForm2(forms.Form):
 
@@ -24,4 +26,4 @@ class UserLoginForm(forms.Form):
 
 class NewPostForm(forms.Form):
 
-    post_content = forms.CharField(max_length=150, widget=forms.Textarea(attrs={'placeholder': "What's on your mind...?"}), label='')
+    post_content = forms.CharField(max_length=150, widget=forms.Textarea(attrs={'placeholder': "What's on your mind...?"}), label='', )

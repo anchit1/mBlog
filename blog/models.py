@@ -12,6 +12,7 @@ class User(models.Model):
     password_hash = models.CharField(max_length=256)
     city = models.CharField(max_length=50, blank=True)
     country = models.CharField(max_length=50, blank=True)
+    # post_count = models.IntegerField(default=0)
 
     def __str__(self):
         return self.username
