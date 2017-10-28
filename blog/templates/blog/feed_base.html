@@ -1,67 +1,119 @@
-    <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <title></title>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            {% load static %}
-            <link href="{% static 'css/test/style.css' %}" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static %}
+        <link href="{% static 'css/test/style.css' %}" rel="stylesheet">
 {#            <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">#}
-        </head>
-        <body>
+    </head>
+    <body>
 
-        <!--header-->
-        <div id="header" class="flex">
-            <div id="header-logo"><h1><a href="{% url 'home' %}">mBlog</a> </h1></div>
-            <div id="dropdown">
-                <img id="header-profile-pic" src="{% static 'css/test/ss.png' %}">
-                <div class="dropdown-container">
-                    <div class="dropdown-item"><a href="{% url 'logout' %}">Log out</a></div>
-                </div>
-
-
+    <!--header-->
+    <div id="header" class="flex">
+        <div id="header-logo"><h1><a href="{% url 'home' %}">mBlog</a> </h1></div>
+        <div id="dropdown">
+            <img id="header-profile-pic" src="{% static 'css/test/ss.png' %}">
+            <div class="dropdown-container">
+                <div class="dropdown-item"><a href="{% url 'logout' %}">Log out</a></div>
             </div>
+
+
         </div>
+    </div>
 
-        <!--body-->
-        <div id="body" class="flex">
+    <!--body-->
+    <div id="body" class="flex">
 
-            <!--sidebar-->
-            <div id="sidebar">
-                <div id="profile-side-container">
-                    <img id="profile-pic" src="{% static 'css/test/ss.png' %}" alt="profile pic">
-                    <div class="divider"></div>
-                    <div id="side-stat-container" class="flex">
-                        <p><strong>POSTS </strong>34,236</p>
-                        <p><strong>FOLLOWERS </strong>2.5M</p>
-                        <p><strong>FOLLOWING </strong>12</p>
-                    </div>
+        <!--sidebar-->
+        <div id="sidebar">
+            <div id="profile-side-container">
+                <img id="profile-pic" src="{% static 'css/test/ss.png' %}" alt="profile pic">
+                <div class="divider"></div>
+                <div id="side-stat-container" class="flex">
+                    <p><strong>POSTS </strong>34,236</p>
+                    <p><strong>FOLLOWERS </strong>2.5M</p>
+                    <p><strong>FOLLOWING </strong>12</p>
+                </div>
 {#                    <div id="profile-info" class="container-90">#}
 {#                        <p><strong>Lives in</strong> Jabalpur, India</p>#}
 {#                        <p><strong>About </strong> I'm just some guy studying in GGCT.</p>#}
 {#                    </div>#}
-                </div>
             </div>
-
-            <!--content-->
-            <div id="content">
-                <div id="new-post-container">
-                    <form id="new-post-form" method="post"> {% csrf_token %}
-                        <textarea id="id_post_content" name="post_content" placeholder="What's on your mind...?" maxlength="150" rows="10" cols="40"></textarea>
-                        <div id="new-post-bottom">
-                            <input id="post-btn" type="submit" value="POST" formnovalidate>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!--aside-->
-            <div id="aside"></div>
         </div>
 
-        <!--footer-->
-        <div id="footer"></div>
-        </body>
-        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-        <script src="{% static 'js/feed.js' %}"></script>
-    </html>
+        <!--content-->
+        <div id="content">
+            <div id="new-post-container">
+                <form id="new-post-form" method="post"> {% csrf_token %}
+                    <textarea id="id_post_content" name="post_content" placeholder="What's on your mind...?" maxlength="150" rows="10" cols="40"></textarea>
+                    <div id="new-post-bottom">
+                        <input id="post-btn" type="submit" value="POST" formnovalidate>
+                    </div>
+                </form>
+            </div>
+
+            <div id="post-container">
+                {% for post in post_list %}
+                    <div class="post flex">
+                        <img src="{% static 'css/test/ss.png' %}">
+                        <div class="post-content">
+                            <div class="post-content-upper flex">
+                                <strong>{{ post.author.first_name }} {{ post.author.last_name }}</strong>
+                                <p>@{{ post.author }}</p>
+                                <p class="post-timestamp">{{ post.publish_date }}</p>
+                            </div>
+                            <div class="post-content-main">
+                                {{ post.content }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-lower"></div>
+                    <div class="divider-full"></div>
+                {% endfor %}
+{#                <div class="post flex">#}
+{#                    <img src="{% static 'css/test/ss.png' %}">#}
+{#                    <div class="post-content">#}
+{#                        <div class="post-content-upper flex">#}
+{#                            <strong>Anchit Shukla</strong>#}
+{#                            <p class="upper-text">@anchit1 - </p>#}
+{#                            <p class="upper-text"> -4h ago</p>#}
+{#                        </div>#}
+{#                        <div class="post-content-main">#}
+{#                            Hello world! My name is anchit shukla#}
+{#                        </div>#}
+{#                        <div class="post-lower"></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="divider-full"></div>#}
+{#                <div class="post flex">#}
+{#                    <img src="{% static 'css/test/ss.png' %}">#}
+{#                    <div class="post-content">#}
+{#                        <div class="post-upper">#}
+{#                            <p>hello</p>#}
+{#                            <p>hello</p>#}
+{#                            <p>hello</p>#}
+{#                            <p>hello</p>#}
+{#                            <p>hello</p>#}
+{#                            <p>hello</p>#}
+{#                            <p>hello</p>#}
+{##}
+{#                        </div>#}
+{#                        <div class="post-lower"></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="divider-full"></div>#}
+            </div>
+        </div>
+
+        <!--aside-->
+        <div id="aside"></div>
+    </div>
+
+    <!--footer-->
+    <div id="footer"></div>
+    </body>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/feed.js' %}"></script>
+</html>

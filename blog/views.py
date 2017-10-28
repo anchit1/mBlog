@@ -106,6 +106,7 @@ def about(request):
 
 
 def feed(request, pk):
+    post_list= Post.objects.all();
     if request.method == 'POST':
         new_post = Post()
         new_post.content = request.POST['post_content']
@@ -113,7 +114,7 @@ def feed(request, pk):
         new_post.save()
         return redirect('feed', pk=request.session.get('current_user'))
         print(new_post.publish_date)
-    return render(request, 'blog/feed_base.html', {'user': pk})
+    return render(request, 'blog/feed_base.html', {'user': pk, 'post_list': post_list})
 
 
 def test(request):
