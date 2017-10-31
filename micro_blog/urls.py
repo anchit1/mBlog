@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^about/', views.about, name='about'),
     url(r'^logout/', views.logout, name='logout'),
     url(r'^test/', views.test, name='test_feed'),
+    url(r'^test_prof/', views.test_user_profile, name='test_user_profile'),
 ]
 
 urlpatterns += url(r'^(?P<pk>\w+)', views.feed, name='feed'),

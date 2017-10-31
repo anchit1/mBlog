@@ -120,3 +120,7 @@ def feed(request, pk):
 def test(request):
     return render(request, 'test/test_feed.html')
     # return HttpResponse('hello world')
+
+
+def test_user_profile(request):
+    return render(request, 'test/test_user_profile.html')
