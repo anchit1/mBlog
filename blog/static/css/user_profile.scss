@@ -1,0 +1,62 @@
+// ********** style variables **********
+$header-height: 50px;
+$header-color: white;
+$sidebar-flex: 1;
+$content-flex: 1;
+$aside-flex: 1;
+
+// ********** miscellenious stuff **********
+.flex {
+    display: flex;
+}
+
+body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+// ********** header style **********
+#header {
+    background-color: $header-color;
+    height: $header-height;
+}
+
+
+// ********** banner style **********
+#profile-banner {
+    background-color: blue;
+    height: 200px;
+}
+
+
+// ********** info bar style **********
+#info-bar {
+    height: 60px;
+    background-color: indigo;
+}
+
+
+// ********** main body style **********
+#body {
+
+}
+
+
+// ***** sidebar style **********
+#sidebar {
+    flex: $content-flex;
+}
+
+// ********** content style **********
+#content {
+    flex: $content-flex;
+}
+
+// ********** aside style **********
+#aside {
+    flex: $aside-flex;
+}

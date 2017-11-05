@@ -1,0 +1,31 @@
+.flex {
+  display: flex; }
+
+body {
+  margin: 0; }
+
+* {
+  box-sizing: border-box; }
+
+#header {
+  background-color: white;
+  height: 50px; }
+
+#profile-banner {
+  background-color: blue;
+  height: 200px; }
+
+#info-bar {
+  height: 60px;
+  background-color: indigo; }
+
+#sidebar {
+  flex: 1; }
+
+#content {
+  flex: 1; }
+
+#aside {
+  flex: 1; }
+
+/*# sourceMappingURL=user_profile.css.map */
