@@ -1,9 +1,16 @@
 // ********** style variables **********
 $header-height: 50px;
-$header-color: white;
+$header-color: violet;
 $sidebar-flex: 1;
 $content-flex: 1;
 $aside-flex: 1;
+
+$content-min-width: 600px;
+$sidebar-min-width: 275px;
+
+$primary-color: #2196F3;
+$bg-color: #ececec;
+$info-bar-color: white;
 
 // ********** miscellenious stuff **********
 .flex {
@@ -12,10 +19,12 @@ $aside-flex: 1;
 
 body {
     margin: 0;
+    background-color: $bg-color;
 }
 
 * {
     box-sizing: border-box;
+    font-family: 'helvetica';
 }
 
 
@@ -23,29 +32,73 @@ body {
 #header {
     background-color: $header-color;
     height: $header-height;
+    width: 100%;
 }
 
 
 // ********** banner style **********
 #profile-banner {
-    background-color: blue;
+    background-color: yellowgreen;
     height: 200px;
+    width: 100%;
 }
 
 
 // ********** info bar style **********
 #info-bar {
     height: 60px;
+    background-color: $info-bar-color;
 }
 
 #info-bar-left {
     flex: 1;
     height: 100%;
+    min-width: $sidebar-min-width;
     // background-color: red;
 }
 
-#info-bar-right {
+#info-bar-center {
     flex: 2;
+    height: 100%;
+    min-width: $content-min-width;
+    // background-color: firebrick;
+}
+
+#profile-stats-main {
+    height: 100%;
+    width: 400px;
+    margin: 0 auto;
+    justify-content: center;
+    // background-color: lawngreen;
+}
+
+.info-bar-stat {
+    width: 100px;
+    height: 100%;
+    // background-color: fuchsia;
+    margin: 0 5px;
+    text-align: center;
+
+    p {
+        margin: 0;
+    }
+
+    .stat-label {
+        font-size: 12px;
+        font-weight: 900;
+        line-height: 30px;
+    }
+
+    .stat-count {
+        color: $primary-color;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 18px;
+    }
+}
+
+#info-bar-right {
+    flex: 1;
     height: 100%;
     // background-color: green;
 }
@@ -56,6 +109,8 @@ body {
     height: 180px;
     position: relative;
     margin: -150px auto 0 auto;
+    border-radius: 10px;
+    border: solid white 3px;
 }
 
 
