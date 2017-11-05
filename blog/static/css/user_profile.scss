@@ -36,7 +36,26 @@ body {
 // ********** info bar style **********
 #info-bar {
     height: 60px;
-    background-color: indigo;
+}
+
+#info-bar-left {
+    flex: 1;
+    height: 100%;
+    // background-color: red;
+}
+
+#info-bar-right {
+    flex: 2;
+    height: 100%;
+    // background-color: green;
+}
+
+#profile-pic {
+    display: block;
+    width: 180px;
+    height: 180px;
+    position: relative;
+    margin: -150px auto 0 auto;
 }
 
 
